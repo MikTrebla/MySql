@@ -87,6 +87,7 @@ function returnToMenu() {
                 buyItem();
             } else if (!results.menu) {
                 console.log('Please come again!');
+                connection.end();
                 return;
             }
         })
