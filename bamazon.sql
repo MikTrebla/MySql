@@ -23,3 +23,10 @@ INSERT INTO products SET
 
 
 SELECT * FROM products;
+
+INSERT INTO products (product_name, department_name, price, stock_quantity)
+VALUES
+("Nintendo Switch", "electronics", 299, 1000), ("Canvas Messenger Bag", "accessory", 34.99, 1000),
+("Echo Dot", "electronics", 39.99, 1000),("Catnip", "pet", 4.65, 1000), 
+("Cat food", "pet", 14.12, 1000), ("Green Tea", "food", 13.97, 1000), 
+("Pusheen Stuffed Pillow", 'toy' , 16.96, 1000),("Casio Men's Digital Watch", "accessory", 26.99, 1000);
