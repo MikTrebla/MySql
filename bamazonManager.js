@@ -47,7 +47,7 @@ function viewProducts() {
         returnToMenu();
 
     });
-    
+
 };
 
 function viewLowInv() {

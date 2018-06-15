@@ -34,4 +34,10 @@ VALUES
 UPDATE products SET stock_quantity = 3
 WHERE item_id = 1;
 
+
+
 SELECT * FROM products;
+
+
+ALTER TABLE products
+ADD product_sales DECIMAL(18,2);
