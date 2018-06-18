@@ -39,3 +39,6 @@ SELECT * FROM products;
 
 ALTER TABLE products
 ADD product_sales DECIMAL(18,2);
+
+UPDATE products SET product_sales = product_sales + (product_sales * 10)
+WHERE item_id = 2;
