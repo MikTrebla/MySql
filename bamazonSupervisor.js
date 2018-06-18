@@ -40,7 +40,7 @@ function mainMenu() {
 };
 
 function viewSales() {
-    var sql = 'SELECT departments.department_id AS DEPT_ID, departments.department_name as DEPT_NAME, products.product_sales as PRODUCT_SALES, departments.over_head_costs as OVERHEAD_COSTS,products.product_sales - departments.over_head_costs as TOTAL_PROFIT FROM departments.departments INNER JOIN products ON products.department_name = departments.department_name ORDER BY DEPT_ID ASC;'
+    var sql = 'SELECT departments.department_id AS DEPT_ID, departments.department_name as DEPT_NAME, products.product_sales as PRODUCT_SALES, departments.over_head_costs as OVERHEAD_COSTS,products.product_sales - departments.over_head_costs as TOTAL_PROFIT FROM departments LEFT JOIN products ON products.department_name = departments.department_name ORDER BY DEPT_ID ASC;'
     connection.query(sql, function (err, results) {
         var data, output;
         // console.log(results)
