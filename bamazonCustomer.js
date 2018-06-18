@@ -57,7 +57,8 @@ function buyItem() {
                 if (answer.qty <= chosenItem.stock_quantity) {
 
                     connection.query('UPDATE products SET ? WHERE ?', [{
-                            stock_quantity: parseInt(chosenItem.stock_quantity) - parseInt(answer.qty)
+                            stock_quantity: parseInt(chosenItem.stock_quantity) - parseInt(answer.qty),
+                            product_sales : (answer.qty * chosenItem.price).toFixed(2)
                         },
                         {
                             item_id: chosenItem.item_id
@@ -73,8 +74,8 @@ function buyItem() {
                 }
 
             });
-    })
-}
+    });
+};
 
 function returnToMenu() {
     inquire.prompt([{
@@ -89,6 +90,6 @@ function returnToMenu() {
                 console.log('Please come again!');
                 connection.end();
                 return;
-            }
-        })
-}
+            };
+        });
+};
