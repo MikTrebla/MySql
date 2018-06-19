@@ -41,7 +41,8 @@ DESCRIBE products;
 ALTER TABLE products
 ADD product_sales DECIMAL(18,2);
 
-ALTER TABLE products ADD CONSTRAINT DF_SomeName DEFAULT N 0.00 FOR product_sales;
+ALTER TABLE products
+ADD COLUMN product_sales DECIMAL(18,2) NOT NULL DEFAULT 0.00;
 
 UPDATE products SET product_sales = (product_sales + (price * 10))
 WHERE item_id = 2;
@@ -67,7 +68,7 @@ SELECT departments.department_id AS DEPT_ID, departments.department_name as DEPT
 FROM departments.departments
 LEFT JOIN products
 ON products.department_name = departments.department_name
-ORDER BY DEPT_ID ASC;
+GROUP BY departments.department_name ORDER BY DEPT_ID ASC;
 
 
 
