@@ -64,11 +64,11 @@ SELECT * FROM departments;
 
 
 
-SELECT departments.department_id AS DEPT_ID, departments.department_name as DEPT_NAME, products.product_sales as PRODUCT_SALES, departments.over_head_costs as OVERHEAD_COSTS,products.product_sales - departments.over_head_costs as TOTAL_PROFIT
-FROM departments.departments
-LEFT JOIN products
-ON products.department_name = departments.department_name
-GROUP BY departments.department_name ORDER BY DEPT_ID ASC;
+SELECT departments.department_id AS DEPT_ID, departments.department_name as DEPT_NAME, SUM(products.product_sales) as PRODUCT_SALES, departments.over_head_costs as OVERHEAD_COSTS,products.product_sales - departments.over_head_costs as TOTAL_PROFIT
+FROM departments
+INNER JOIN products
+ON products.department_name = departments.department_name AND products.item_id = departments.department_id
+ORDER BY DEPT_ID ASC;
 
 
 

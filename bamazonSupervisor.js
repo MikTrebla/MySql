@@ -78,8 +78,8 @@ function createDept() {
                 if (err) throw err;
                 console.log('Department added.');
                 returnToMenu();
-            })
-        })
+            });
+        });
 };
 
 function returnToMenu() {
@@ -95,6 +95,6 @@ function returnToMenu() {
                 console.log('Okay. Bye.');
                 connection.end();
                 return;
-            }
-        })
-}
+            };
+        });
+};
