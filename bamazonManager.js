@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
 
 connection.connect(function (err) {
     if (err) throw err;
-    console.log("connected as id " + connection.threadId);
+    console.clear();
     mainMenu();
 });
 
@@ -22,7 +22,7 @@ function mainMenu() {
             name: 'command',
             message: 'What would you like to do today?',
             type: 'list',
-            choices: ['View Products', 'View Low Inventory', 'Add to Inventory', 'Add New Product']
+            choices: ['View Products', 'View Low Inventory', 'Add to Inventory', 'Add New Product', 'Exit']
         }])
         .then(function (results) {
             if (results.command === 'View Products') {
@@ -33,7 +33,9 @@ function mainMenu() {
                 addToInv();
             } else if (results.command === 'Add New Product') {
                 addNew();
-            };
+            } else if (results.command === 'Exit') {
+                return;
+            }
         });
 };
 
@@ -45,9 +47,7 @@ function viewProducts() {
             console.log('item_id: ' + results[i].item_id + '. Product: ' + results[i].product_name + '. Price: $' + results[i].price + '. Current Quantity: ' + results[i].stock_quantity)
         };
         returnToMenu();
-
     });
-
 };
 
 function viewLowInv() {
@@ -121,11 +121,12 @@ function returnToMenu() {
         }])
         .then(function (results) {
             if (results.menu) {
+                console.clear();
                 mainMenu();
             } else if (!results.menu) {
                 console.log('Okay. Bye.');
                 connection.end();
                 return;
-            }
-        })
-}
+            };
+        });
+};

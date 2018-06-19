@@ -15,7 +15,7 @@ var connection = mysql.createConnection({
 connection.connect(function (err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId);
-
+    console.clear();
     mainMenu();
 });
 
@@ -27,7 +27,7 @@ function mainMenu() {
             name: 'command',
             message: 'What would you like to do today?',
             type: 'list',
-            choices: ['View Product Sales by Department', 'Create New Department']
+            choices: ['View Product Sales by Department', 'Create New Department', 'Exit']
         }])
         .then(function (results) {
             // console.clear();
@@ -35,7 +35,9 @@ function mainMenu() {
                 viewSales();
             } else if (results.command === 'Create New Department') {
                 createDept();
-            };
+            } else if (results.command === 'Exit') {
+                return;
+            }
         });
 };
 
@@ -90,6 +92,7 @@ function returnToMenu() {
         }])
         .then(function (results) {
             if (results.menu) {
+                console.clear();
                 mainMenu();
             } else if (!results.menu) {
                 console.log('Okay. Bye.');

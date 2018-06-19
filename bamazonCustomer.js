@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
 connection.connect(function (err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId);
-
+    console.clear();
     displayProducts();
 });
 
@@ -87,6 +87,7 @@ function returnToMenu() {
         }])
         .then(function (results) {
             if (results.menu) {
+                console.clear();
                 buyItem();
             } else if (!results.menu) {
                 console.log('Please come again!');
