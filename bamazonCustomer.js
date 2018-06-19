@@ -18,6 +18,7 @@ connection.connect(function (err) {
 
 function displayProducts() {
     connection.query('SELECT * FROM products', function (err, results) {
+        if (err) throw err;
         for (var i = 0; i < results.length; i++) {
             console.log(results[i].item_id + ': ' + results[i].product_name + '. Price: $' + results[i].price + '. Current Quantity: ' + results[i].stock_quantity)
         }
@@ -56,7 +57,7 @@ function buyItem() {
                 }
                 if (answer.qty <= chosenItem.stock_quantity) {
                     var newQuantity = parseInt(chosenItem.stock_quantity) - parseInt(answer.qty);
-                    var newSales = parseInt((chosenItem.price*answer.qty).toFixed(2)) + parseInt(chosenItem.product_sales);
+                    var newSales = parseInt((chosenItem.price * answer.qty).toFixed(2)) + parseInt(chosenItem.product_sales);
                     connection.query('UPDATE products SET ? WHERE ?', [{
                             stock_quantity: newQuantity,
                             product_sales: newSales
