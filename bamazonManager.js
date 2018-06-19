@@ -9,13 +9,11 @@ var connection = mysql.createConnection({
     database: "bamazon"
 });
 
-
 connection.connect(function (err) {
     if (err) throw err;
     console.clear();
     mainMenu();
 });
-
 
 function mainMenu() {
     inquire.prompt([{
@@ -111,7 +109,6 @@ function addNew() {
             returnToMenu();
         });
 };
-
 
 function returnToMenu() {
     inquire.prompt([{

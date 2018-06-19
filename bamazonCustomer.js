@@ -20,11 +20,10 @@ function displayProducts() {
     connection.query('SELECT * FROM products', function (err, results) {
         if (err) throw err;
         for (var i = 0; i < results.length; i++) {
-            console.log(results[i].item_id + ': ' + results[i].product_name + '. Price: $' + results[i].price + '. Current Quantity: ' + results[i].stock_quantity)
+            console.log('Item ID: ' + results[i].item_id + ' || ' + results[i].product_name + ' || Price: $' + results[i].price + ' || Current Quantity: ' + results[i].stock_quantity)
         }
         buyItem();
-    })
-
+    });
 };
 
 function buyItem() {

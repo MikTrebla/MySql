@@ -19,9 +19,6 @@ connection.connect(function (err) {
     mainMenu();
 });
 
-
-
-
 function mainMenu() {
     inquire.prompt([{
             name: 'command',
@@ -30,7 +27,6 @@ function mainMenu() {
             choices: ['View Product Sales by Department', 'Create New Department', 'Exit']
         }])
         .then(function (results) {
-            // console.clear();
             if (results.command === 'View Product Sales by Department') {
                 viewSales();
             } else if (results.command === 'Create New Department') {
@@ -58,9 +54,6 @@ function viewSales() {
     });
 
 };
-
-
-
 
 function createDept() {
     inquire.prompt([{
