@@ -98,5 +98,3 @@ function returnToMenu() {
             }
         })
 }
-
-Error Code: 1055. Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'bamazon.products.product_sales' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
